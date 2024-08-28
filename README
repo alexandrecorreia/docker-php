@@ -1,2 +1,21 @@
-# INSTALL DOCKER-COMPOSE
+# Docker e PHP
+
+Levantando containers com diferentes versões do PHP
+
+# Atualizando o docker-compose
 curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+
+# Rodando o container
+docker-compose up -d
+
+# Containers PHP
+
+| IMAGEM         | PORTAS               | NAMES SERVER                     |
+| :------------- | :------------------- | :------------------------------- |
+| php:7.4-apache | 0.0.0.0:8081->80/tcp | :::8081->80/tcp   app2.server    |
+| php:5.5-apache | 0.0.0.0:8080->80/tcp | :::8080->80/tcp   app1.server    |
+
+## Autor
+
+- [@alexandrecorreia](https://github.com/alexandrecorreia/docker-php)
+
