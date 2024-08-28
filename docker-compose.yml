@@ -1,0 +1,41 @@
+services:
+  app1:
+    image: php:5.5-apache
+    container_name: app1.server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app1:/var/www/html
+    networks:
+      mynetwork:
+        ipv4_address: 172.16.0.10
+
+  app2:
+    image: php:7.4-apache
+    container_name: app2.server
+    ports:
+      - "8081:80"
+    volumes:
+      - ./app2:/var/www/html
+    networks:
+      mynetwork:
+        ipv4_address: 172.16.0.11
+
+  # haproxy:
+  #   image: haproxy:latest
+  #   container_name: haproxy.server
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+  #   depends_on:
+  #     - app1
+  #     - app2
+  #   networks:
+  #       - mynetwork      
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/24
